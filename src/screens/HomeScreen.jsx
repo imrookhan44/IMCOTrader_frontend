@@ -17,6 +17,8 @@ const HomeScreen = () => {
     pageNumber,
   });
 
+  console.log("data", data, "error:", error)
+
   return (
     <>
       {!keyword ? (
