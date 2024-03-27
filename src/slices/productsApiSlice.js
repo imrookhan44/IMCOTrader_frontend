@@ -1,6 +1,8 @@
 import { PRODUCTS_URL } from '../constants';
 import { apiSlice } from './apiSlice';
-
+const getTokenFromLocalStorage = () => {
+  return localStorage.getItem('token');
+};
 export const productsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getProducts: builder.query({
@@ -14,13 +16,20 @@ export const productsApiSlice = apiSlice.injectEndpoints({
     getProductDetails: builder.query({
       query: (productId) => ({
         url: `${PRODUCTS_URL}/${productId}`,
+        headers: new Headers({
+          Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+        }),
       }),
       keepUnusedDataFor: 5,
     }),
     createProduct: builder.mutation({
-      query: () => ({
+      query: (details) => ({
         url: `${PRODUCTS_URL}`,
         method: 'POST',
+        body: details,
+        headers: new Headers({
+          Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+        }),
       }),
       invalidatesTags: ['Product'],
     }),
@@ -29,6 +38,9 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         url: `${PRODUCTS_URL}/${data.productId}`,
         method: 'PUT',
         body: data,
+        headers: new Headers({
+          Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+        }),
       }),
       invalidatesTags: ['Products'],
     }),
@@ -43,6 +55,9 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       query: (productId) => ({
         url: `${PRODUCTS_URL}/${productId}`,
         method: 'DELETE',
+        headers: new Headers({
+          Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+        }),
       }),
       providesTags: ['Product'],
     }),
@@ -51,6 +66,9 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         url: `${PRODUCTS_URL}/${data.productId}/reviews`,
         method: 'POST',
         body: data,
+        headers: new Headers({
+          Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+        }),
       }),
       invalidatesTags: ['Product'],
     }),

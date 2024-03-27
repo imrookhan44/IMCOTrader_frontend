@@ -40,7 +40,7 @@ const ProductEditScreen = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      await updateProduct({
+      const res = await updateProduct({
         productId,
         name,
         price,
@@ -50,13 +50,22 @@ const ProductEditScreen = () => {
         description,
         countInStock,
       });
-      toast.success('Product updated');
-      refetch();
-      navigate('/admin/productlist');
+      if (res?.data) {
+        toast.success('Product updated successfully', {
+          theme: 'colored'
+        });
+        refetch();
+        navigate('/admin/productlist');
+      }
     } catch (err) {
-      toast.error(err?.data?.message || err.error);
+      toast.error(
+        err?.data?.message || err.error || 'Something went wrong', {
+        theme: 'colored'
+      }
+      );
     }
   };
+
 
   useEffect(() => {
     if (product) {
@@ -70,16 +79,29 @@ const ProductEditScreen = () => {
     }
   }, [product]);
 
-  const uploadFileHandler = async (e) => {
-    const formData = new FormData();
-    formData.append('image', e.target.files[0]);
-    try {
-      const res = await uploadProductImage(formData).unwrap();
-      toast.success(res.message);
-      setImage(res.image);
-    } catch (err) {
-      toast.error(err?.data?.message || err.error);
-    }
+  // const uploadFileHandler = async (e) => {
+  //   const formData = new FormData();
+  //   formData.append('image', e.target.files[0]);
+  //   try {
+  //     const res = await uploadProductImage(formData).unwrap();
+  //     toast.success(res.message);
+  //     setImage(res.image);
+  //   } catch (err) {
+  //     toast.error(err?.data?.message || err.error);
+  //   }
+  // };
+
+  const uploadFileHandler = (e) => {
+    console.log(e.target.files[0]);
+    const file = e.target.files[0];
+    setFileToBase(file);
+  };
+  const setFileToBase = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      setImage(reader.result);
+    };
   };
 
   return (
@@ -126,8 +148,9 @@ const ProductEditScreen = () => {
               ></Form.Control>
               <Form.Control
                 label='Choose File'
-                onChange={uploadFileHandler}
-                type='file'
+                type="file"
+                name="image"
+                onChange={(e) => uploadFileHandler(e)}
               ></Form.Control>
               {loadingUpload && <Loader />}
             </Form.Group>

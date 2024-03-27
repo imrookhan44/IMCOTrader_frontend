@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { logout } from './slices/authSlice';
-
+import { FloatingWhatsApp } from 'react-floating-whatsapp'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -33,6 +33,8 @@ const App = () => {
         </Container>
       </main>
       <Footer />
+      <FloatingWhatsApp phoneNumber='+923149060781' accountName='Imran' darkMode={true} notificationStyle={true} notificationSound={true} />
+
     </>
   );
 };
