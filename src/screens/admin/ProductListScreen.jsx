@@ -163,7 +163,9 @@ const ProductListScreen = () => {
                       className="btn-sm"
                       onClick={() => deleteHandler(product._id)}
                     >
-                      <FaTrash style={{ color: "white" }} />
+                      <FaTrash
+                        className="times2-icon"
+                      />
                     </Button>
                   </td>
                 </tr>

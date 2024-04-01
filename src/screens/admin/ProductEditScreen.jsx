@@ -198,7 +198,7 @@ const ProductEditScreen = () => {
             <Button
               type='submit'
               variant='primary'
-              style={{ marginTop: '1rem' }}
+              className='btn-block mt-3'
             >
               Update
             </Button>

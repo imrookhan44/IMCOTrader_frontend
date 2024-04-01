@@ -56,9 +56,13 @@ const UserListScreen = () => {
                 </td>
                 <td>
                   {user.isAdmin ? (
-                    <FaCheck style={{ color: 'green' }} />
+                    <FaCheck
+                      className='times1-icon'
+                    />
                   ) : (
-                    <FaTimes style={{ color: 'red' }} />
+                    <FaTimes
+                      className='times-icon'
+                    />
                   )}
                 </td>
                 <td>
@@ -66,7 +70,7 @@ const UserListScreen = () => {
                     <>
                       <LinkContainer
                         to={`/admin/user/${user._id}/edit`}
-                        style={{ marginRight: '10px' }}
+                        className='mx-2'
                       >
                         <Button variant='light' className='btn-sm'>
                           <FaEdit />
@@ -77,7 +81,9 @@ const UserListScreen = () => {
                         className='btn-sm'
                         onClick={() => deleteHandler(user._id)}
                       >
-                        <FaTrash style={{ color: 'white' }} />
+                        <FaTrash
+                          className='times2-icon'
+                        />
                       </Button>
                     </>
                   )}

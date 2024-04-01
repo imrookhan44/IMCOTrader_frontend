@@ -39,7 +39,8 @@ const Footer = () => {
                 <div className="footer-underline" />
                 <div className="mb-2">
                   <p>
-                    <i className="fa fa-map-marker" /> #444, some main road, some area, some street, bangalore, india - 560077
+                    <i className="fa fa-map-marker" />
+                    zaida swabi kpk, Pakistan
                   </p>
                 </div>
                 <div className="mb-2">
@@ -49,7 +50,7 @@ const Footer = () => {
                 </div>
                 <div className="mb-2">
                   <a href className="text-white">
-                    <FaEnvelope /> khannihar921@gmail.com
+                    <FaEnvelope /> Imco@gmail.com
                   </a>
                 </div>
               </div>
@@ -68,7 +69,6 @@ const Footer = () => {
                   <a href><FaFacebook /></a>
                   <a href><FaTwitter /></a>
                   <a href><FaInstagram /></a>
-                  {/* <a href><i className="fa fa-youtube" /></a> */}
                 </div>
               </div>
             </div>
