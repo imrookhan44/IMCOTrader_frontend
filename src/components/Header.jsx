@@ -29,7 +29,7 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar style={{ background: "linear-gradient(105deg, #3a4559, #141921)" }} bg='primary' variant='dark' expand='lg' collapseOnSelect>
+      <Navbar className='header_color' bg='primary' variant='dark' expand='lg' collapseOnSelect>
         <Container>
           <LinkContainer to='/'>
             <Navbar.Brand>
@@ -41,11 +41,16 @@ const Header = () => {
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
               <SearchBox />
+              <Nav.Link>
+                Referral Points: <strong>{userInfo?.balance ? userInfo?.balance : 0}</strong>
+              </Nav.Link>
               <LinkContainer to='/cart'>
                 <Nav.Link>
                   <FaShoppingCart /> Cart
                   {cartItems.length > 0 && (
-                    <Badge pill bg='success' style={{ marginLeft: '5px' }}>
+                    <Badge pill bg='success'
+                      className='ms-1'
+                    >
                       {cartItems.reduce((a, c) => a + c.qty, 0)}
                     </Badge>
                   )}

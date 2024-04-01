@@ -17,10 +17,14 @@ main {
 }
 
 .product-title {
-  height: 2.5em; /* Set a fixed height */
-  overflow: hidden; /* Hide overflow content */
-  text-overflow: ellipsis; /* Add ellipsis for long text */
-  white-space: nowrap; /* Prevent wrapping */
+  height: 2.5em;
+  /* Set a fixed height */
+  overflow: hidden;
+  /* Hide overflow content */
+  text-overflow: ellipsis;
+  /* Add ellipsis for long text */
+  white-space: nowrap;
+  /* Prevent wrapping */
 }
 
 table td,
@@ -50,4 +54,35 @@ table th {
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
+}
+
+.product-image-carousel {
+  width: '50%';
+  height: '400px';
+  object-fit: cover;
+  object-position: center;
+  border: solid red 1px;
+}
+
+.spinner__loader {
+  width: '100px';
+  height: '100px';
+  margin: 'auto';
+  display: 'block';
+}
+
+.times-icon {
+  color: red;
+}
+
+.times1-icon {
+  color: green;
+}
+
+.times2-icon {
+  color: white;
+}
+
+.header_color {
+  background: "linear-gradient(105deg, #3a4559, #141921)"
 }

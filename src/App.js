@@ -33,7 +33,7 @@ const App = () => {
         </Container>
       </main>
       <Footer />
-      <FloatingWhatsApp phoneNumber='+923149060781' accountName='Imran' darkMode={true} notificationStyle={true} notificationSound={true} />
+      <FloatingWhatsApp phoneNumber='+923143088544' accountName='Imran' darkMode={true} />
 
     </>
   );
