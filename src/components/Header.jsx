@@ -11,7 +11,6 @@ import logo from '../assets/logo1.png';
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
   const { userInfo } = useSelector((state) => state.auth);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -41,9 +40,11 @@ const Header = () => {
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
               <SearchBox />
-              <Nav.Link>
-                Referral Points: <strong>{userInfo?.balance ? userInfo?.balance : 0}</strong>
-              </Nav.Link>
+              {userInfo &&
+                <Nav.Link>
+                  Referral Points : <strong>{userInfo?.points ? userInfo?.points : 0}</strong>
+                </Nav.Link>
+              }
               <LinkContainer to='/cart'>
                 <Nav.Link>
                   <FaShoppingCart /> Cart

@@ -16,6 +16,7 @@ const ProfileScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [referralCode, setReferralCode] = useState('');
 
   const { userInfo } = useSelector((state) => state.auth);
 
@@ -27,7 +28,8 @@ const ProfileScreen = () => {
   useEffect(() => {
     setName(userInfo.name);
     setEmail(userInfo.email);
-  }, [userInfo.email, userInfo.name]);
+    setReferralCode(userInfo?.referralCode);
+  }, [userInfo.email, userInfo.name, userInfo.referralCode]);
 
   const dispatch = useDispatch();
   const submitHandler = async (e) => {
@@ -75,7 +77,14 @@ const ProfileScreen = () => {
               onChange={(e) => setEmail(e.target.value)}
             ></Form.Control>
           </Form.Group>
-
+          <Form.Group className='my-2' controlId='referralCode'>
+            <Form.Label>Referral Code</Form.Label>
+            <Form.Control
+              type='text'
+              placeholder='Enter referral code'
+              value={referralCode}
+            ></Form.Control>
+          </Form.Group>
           <Form.Group className='my-2' controlId='password'>
             <Form.Label>Password</Form.Label>
             <Form.Control

@@ -14,6 +14,7 @@ const RegisterScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [referralCode, setReferralCode] = useState('');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -39,7 +40,7 @@ const RegisterScreen = () => {
       toast.error('Passwords do not match');
     } else {
       try {
-        const res = await register({ name, email, password }).unwrap();
+        const res = await register({ name, email, password, referralCode }).unwrap();
         dispatch(setCredentials({ ...res }));
         navigate(redirect);
       } catch (err) {
@@ -88,6 +89,17 @@ const RegisterScreen = () => {
             placeholder='Confirm password'
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+        <Form.Group className='my-2' controlId='confirmPassword'>
+          <Form.Label>Enter Referral Code</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder=' Enter Referral Code'
+            value={
+              referralCode
+            }
+            onChange={(e) => setReferralCode(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
